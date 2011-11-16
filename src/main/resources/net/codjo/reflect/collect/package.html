@@ -1,0 +1,46 @@
+<BODY>
+Le package <code>reflect</code> permet de rechercher un ensemble de classes ou
+de ressource (image, etc.) contenue dans le CLASS_PATH avec des critères
+de recherche. <P>
+
+Ce package permet ainsi de rechercher un ensemble de classes en fitrant
+par package, par héritage ou par exclusion d'une classe. La recherche s'effectue
+en itérant sur un répértoire et/ou sur un jar. <P>
+
+<HR width="100%" SIZE=2>
+<STRONG>Utilisation du package</STRONG> <BR>
+
+<u>Classes</u><br/>
+Dans cet exemple, on crée un collecteur de classe qui va charger les
+classes du projet Orbis qui sont sérialisables. On met donc en place 2 filtres
+ (un filtre d'héritage et un filter de package).
+<pre>
+      ClassCollector collector = new ClassCollector();
+      collector.addClassFilter(new PackageFilter("com.agf.orbis", true));
+      collector.addClassFilter(new InheritanceFilter("java.io.Serializable"));
+      Class[] javaLangClasses = collector.collect();
+          </pre>
+<P>
+
+<HR width="100%" SIZE=2>
+<STRONG>Extension</STRONG> <BR>
+On peut imaginer de rajouter des critères de sélection des classes. Il
+suffit pour cela d'implémenter l'interface <code>ClassFilter</code>.
+<P>
+
+<HR width="100%" SIZE=2>
+<STRONG>Résumé des classes</STRONG> <BR>
+Les classes de ce package sont répertoriées en 2 catégories:
+<ul>
+<li> Les collecteurs : ils permettent de collecter dans le classpath <code>ClassCollector</code>.
+
+<li> Les filtres : ils permettent de trier les classes et implémentent
+l'interface <code>ClassFilter</code>.
+
+<li> Les itérateurs : ils permettent de parcourir les classes dans un environnement
+donné (répertoire, jar).
+
+</ul>
+<P>
+
+</BODY>
